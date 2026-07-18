@@ -107,10 +107,9 @@
   .uptime b{ color: var(--navy); font-weight: 600; }
   @media (max-width: 640px){ nav{ display:none; } }
 
-  /* ---------- Hero ---------- */
+  /* ---------- Hero (flexbox) ---------- */
   .hero{
     padding: 80px 0 50px;
-    display:grid; grid-template-columns: 1fr 0.92fr; gap: 30px; align-items:start;
     position: relative;
   }
   .spotlight{
@@ -118,7 +117,11 @@
     background: radial-gradient(320px circle at var(--sx,50%) var(--sy,30%), rgba(102,117,189,0.08), transparent 60%);
     z-index: 0;
   }
-  .hero > *{ position: relative; z-index: 1; }
+  .hero-inner{
+    display: flex; flex-wrap: nowrap; align-items: flex-start; gap: 30px;
+    position: relative; z-index: 1;
+  }
+  .hero-text{ flex: 1 1 0%; min-width: 0; }
 
   .eyebrow{
     font-family: var(--font-mono); font-size: 12px; color: var(--periwinkle);
@@ -161,7 +164,10 @@
   .log-body .tag{ color: #6a72b0; }
 
   /* ---------- Hero visual (logo) ---------- */
-  .hero-visual{ position: relative; display:flex; align-items:center; justify-content:center; margin-top: 6px; }
+  .hero-visual{
+    flex: 0 0 420px; max-width: 420px;
+    position: relative; display:flex; align-items:center; justify-content:center;
+  }
   .logo-glow{
     position:absolute; width: 460px; height: 460px; border-radius: 50%;
     background: radial-gradient(circle, rgba(252,148,31,0.16), rgba(102,117,189,0.14) 55%, transparent 75%);
@@ -183,8 +189,8 @@
   .visual-tag .d{ width:6px; height:6px; border-radius:50%; background: var(--orange); }
 
   @media (max-width: 640px){
-    .hero{ grid-template-columns: 1fr; padding-top: 50px; }
-    .hero-visual{ order: -1; margin-bottom: 10px; margin-top: 0; }
+    .hero-inner{ flex-direction: column; }
+    .hero-visual{ order: -1; margin-bottom: 10px; flex: 0 0 auto; max-width: 300px; align-self: center; }
     .log{ max-width: 100%; }
     .logo-img{ max-width: 300px; }
     .logo-glow{ width: 320px; height: 320px; }
@@ -360,29 +366,31 @@
 
 <section class="hero">
   <div class="spotlight" id="spotlight"></div>
-  <div>
-    <div class="eyebrow">Booth Pameran // SENFA 2026</div>
-    <h1>Satu pintu masuk ke semua booth pameran <em>Seminar Nasional Fisika & Aplikasinya.</em></h1>
-    <p class="sub">BOOTHGATE menghubungkan pengunjung ke booth-booth pameran proyek instrumentasi dan sains data — dari sensor lapangan sampai model machine learning, semua dalam satu gerbang.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="#booths">Kunjungi booth →</a>
-      <a class="btn btn-ghost" href="#about">Tentang acara ini</a>
-    </div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="eyebrow">Booth Pameran // SENFA 2026</div>
+      <h1>Satu pintu masuk ke semua booth pameran <em>Seminar Nasional Fisika & Aplikasinya.</em></h1>
+      <p class="sub">BOOTHGATE menghubungkan pengunjung ke booth-booth pameran proyek instrumentasi dan sains data — dari sensor lapangan sampai model machine learning, semua dalam satu gerbang.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#booths">Kunjungi booth →</a>
+        <a class="btn btn-ghost" href="#about">Tentang acara ini</a>
+      </div>
 
-    <div class="log">
-      <div class="log-head"><span></span><span style="background:var(--orange-light)"></span><span style="background:var(--periwinkle-light)"></span><b>gate.log</b></div>
-      <div class="log-body" id="log-body">
-        <div><span class="tag">[gate]</span> <span class="ok">booth siap</span> → aeromap</div>
-        <div><span class="tag">[gate]</span> <span class="ok">booth siap</span> → pdm-pump</div>
-        <div><span class="tag">[gate]</span> <span class="ok">booth siap</span> → powerfaultpln</div>
+      <div class="log">
+        <div class="log-head"><span></span><span style="background:var(--orange-light)"></span><span style="background:var(--periwinkle-light)"></span><b>gate.log</b></div>
+        <div class="log-body" id="log-body">
+          <div><span class="tag">[gate]</span> <span class="ok">booth siap</span> → aeromap</div>
+          <div><span class="tag">[gate]</span> <span class="ok">booth siap</span> → pdm-pump</div>
+          <div><span class="tag">[gate]</span> <span class="ok">booth siap</span> → powerfaultpln</div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="hero-visual">
-    <div class="logo-glow"></div>
-    <img class="logo-img" src="senfa.png" alt="Logo SENFA 2026 — Seminar Nasional Fisika & Aplikasinya, Departemen Fisika & HIFI FMIPA Unpad">
-    <div class="visual-tag"><span class="d"></span>3 booth terhubung</div>
+    <div class="hero-visual">
+      <div class="logo-glow"></div>
+      <img class="logo-img" src="senfa.png" alt="Logo SENFA 2026 — Seminar Nasional Fisika & Aplikasinya, Departemen Fisika & HIFI FMIPA Unpad">
+      <div class="visual-tag"><span class="d"></span>3 booth terhubung</div>
+    </div>
   </div>
 </section>
 
