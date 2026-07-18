@@ -110,7 +110,7 @@
   /* ---------- Hero ---------- */
   .hero{
     padding: 80px 0 50px;
-    display:grid; grid-template-columns: 1fr 0.92fr; gap: 30px; align-items:center;
+    display:grid; grid-template-columns: 1fr 0.92fr; gap: 30px; align-items:start;
     position: relative;
   }
   .spotlight{
@@ -161,7 +161,7 @@
   .log-body .tag{ color: #6a72b0; }
 
   /* ---------- Hero visual (logo) ---------- */
-  .hero-visual{ position: relative; display:flex; align-items:center; justify-content:center; }
+  .hero-visual{ position: relative; display:flex; align-items:center; justify-content:center; margin-top: 6px; }
   .logo-glow{
     position:absolute; width: 460px; height: 460px; border-radius: 50%;
     background: radial-gradient(circle, rgba(252,148,31,0.16), rgba(102,117,189,0.14) 55%, transparent 75%);
@@ -184,7 +184,7 @@
 
   @media (max-width: 640px){
     .hero{ grid-template-columns: 1fr; padding-top: 50px; }
-    .hero-visual{ order: -1; margin-bottom: 10px; }
+    .hero-visual{ order: -1; margin-bottom: 10px; margin-top: 0; }
     .log{ max-width: 100%; }
     .logo-img{ max-width: 300px; }
     .logo-glow{ width: 320px; height: 320px; }
